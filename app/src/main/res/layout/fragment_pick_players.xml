@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="dev.mfazio.pennydrop.viewmodels.PickPlayersViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,33 +27,37 @@
             <include
                 android:id="@+id/mainPlayer"
                 layout="@layout/player_list_item"
-                app:checkboxHidden="@{true}"
-                app:switchHidden="@{true}" />
+                app:player="@{vm.players[0]}"/>
 
             <include
                 android:id="@+id/player2"
                 layout="@layout/player_list_item"
-                app:checkboxHidden="@{true}" />
+                app:player="@{vm.players[1]}" />
 
             <include
                 android:id="@+id/player3"
-                layout="@layout/player_list_item" />
+                layout="@layout/player_list_item"
+                app:player="@{vm.players[2]}" />
 
             <include
                 android:id="@+id/player4"
-                layout="@layout/player_list_item" />
+                layout="@layout/player_list_item"
+                app:player="@{vm.players[3]}" />
 
             <include
                 android:id="@+id/player5"
-                layout="@layout/player_list_item" />
+                layout="@layout/player_list_item"
+                app:player="@{vm.players[4]}" />
 
             <include
                 android:id="@+id/player6"
-                layout="@layout/player_list_item" />
+                layout="@layout/player_list_item"
+                app:player="@{vm.players[5]}"/>
 
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonPlayGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
