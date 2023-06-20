@@ -6,9 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import dev.mfazio.pennydrop.R
 import dev.mfazio.pennydrop.databinding.FragmentPickPlayersBinding
 import dev.mfazio.pennydrop.viewmodels.GameViewModel
 import dev.mfazio.pennydrop.viewmodels.PickPlayersViewModel
+import kotlinx.coroutines.launch
 
 class PickPlayersFragment : Fragment() {
     private val pickPlayersViewModel by activityViewModels<PickPlayersViewModel>()
@@ -22,11 +26,16 @@ class PickPlayersFragment : Fragment() {
             this.vm = pickPlayersViewModel
 
             this.buttonPlayGame.setOnClickListener {
-                gameViewModel.startGame(pickPlayersViewModel.players.value?.filter { newPlayer ->
-                    newPlayer.isIncluded.get()
-                }?.map { newPlayer ->
-                    newPlayer.toPlayer()
-                } ?: emptyList())
+                viewLifecycleOwner.lifecycleScope.launch {
+                    gameViewModel.startGame(
+                        pickPlayersViewModel.players.value?.filter { newPlayer ->
+                            newPlayer.isIncluded.get()
+                        }?.map { newPlayer ->
+                            newPlayer.toPlayer()
+                        } ?: emptyList()
+                    )
+                    findNavController().navigate(R.id.gameFragment)
+                }
             }
         }
         return binding.root
