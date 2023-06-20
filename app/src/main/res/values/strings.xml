@@ -1,16 +1,22 @@
+<!--
+ ! Excerpted from "Kotlin and Android Development featuring Jetpack",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit https://pragprog.com/titles/mfjetpack for more book information.
+-->
 <resources>
     <string name="app_name">Penny Drop</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="pick_players_fragment">Pick Players Fragment</string>
-    <string name="game_fragment">Game Fragment</string>
     <string name="players">Players</string>
     <string name="game">Game</string>
-    <string name="play_button">Play the game!</string>
-    <string name="player_name">The player\'s name...</string>
+    <string name="player_name">Player Name</string>
     <string name="roll">Roll</string>
     <string name="or">OR</string>
     <string name="pass">Pass</string>
-    <string name="coin_icon">Coin slot.</string>
+    <string name="cur_player">Current Player</string>
+    <string name="coin_icon">Coin Icon</string>
+    <string name="coins_left">coin(s) left</string>
     <string name="na">N/A</string>
-    <string name="coins_left">Coin(s) left</string>
+    <string name="play_button">Play Button</string>
 </resources>

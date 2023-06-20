@@ -1,7 +1,7 @@
 package dev.mfazio.pennydrop.types
 
 import androidx.databinding.ObservableBoolean
-import dev.mfazio.pennydrop.AI
+import dev.mfazio.pennydrop.game.AI
 
 data class NewPlayer(
     var playerName: String = "",
@@ -18,12 +18,19 @@ data class NewPlayer(
     }
 
     fun toPlayer() = Player(
-        if (this.isHuman.get()) {
-            this.playerName
-        } else {
-            (this.selectedAI()?.name ?: "AI")
-        },
-        this.isHuman.get(),
-        this.selectedAI()
+        playerName = if (this.isHuman.get()) this.playerName else (this.selectedAI()?.name ?: "AI"),
+        isHuman = this.isHuman.get(),
+        selectedAI = this.selectedAI()
     )
+
+    override fun toString() = listOf(
+        "name" to this.playerName,
+        "isIncluded" to this.isIncluded.get(),
+        "isHuman" to this.isHuman.get(),
+        "canBeRemoved" to this.canBeRemoved,
+        "canBeToggled" to this.canBeToggled,
+        "selectedAI" to (this.selectedAI()?.name ?: "N/A")
+    ).joinToString(", ", "NewPlayer(", ")") { (property, value) ->
+        "$property=$value"
+    }
 }

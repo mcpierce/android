@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+ ! Excerpted from "Kotlin and Android Development featuring Jetpack",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit https://pragprog.com/titles/mfjetpack for more book information.
+-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -132,9 +139,9 @@
                 android:background="@{vm.canRoll ? @color/colorPrimary : @color/plainGray}"
                 android:drawableEnd="@drawable/mdi_dice_6_black_24dp"
                 android:drawableTint="@android:color/white"
-                android:padding="10dp"
                 android:enabled="@{vm.canRoll}"
                 android:onClick="@{() -> vm.roll()}"
+                android:padding="10dp"
                 android:text="@string/roll"
                 android:textColor="@android:color/white" />
 
@@ -150,12 +157,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"
+                android:background="@{vm.canPass ? @color/colorAccent : @color/plainGray}"
+                android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
+                android:drawableTint="@android:color/white"
                 android:enabled="@{vm.canPass}"
+                android:onClick="@{() -> vm.pass()}"
                 android:padding="10dp"
                 android:text="@string/pass"
-                android:textColor="@android:color/white"
-                android:drawableTint="@android:color/white" />
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <TextView
@@ -164,7 +173,7 @@
             android:layout_height="0dp"
             android:layout_margin="16dp"
             android:scrollbars="vertical"
-            android:text="@{vm.currentTurnText}"
+            android:text="@{vm.currentGame.game.currentTurnText}"
             app:layout_constraintBottom_toTopOf="@id/textCurrentStandingsInfo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

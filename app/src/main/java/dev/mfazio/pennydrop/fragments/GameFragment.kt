@@ -11,19 +11,23 @@ import dev.mfazio.pennydrop.databinding.FragmentGameBinding
 import dev.mfazio.pennydrop.viewmodels.GameViewModel
 
 class GameFragment : Fragment() {
+
     private val gameViewModel by activityViewModels<GameViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val binding = FragmentGameBinding.inflate(inflater, container, false).apply {
-            vm = gameViewModel
+    ): View? {
+        val binding = FragmentGameBinding
+            .inflate(inflater, container, false)
+            .apply {
+                vm = gameViewModel
 
-            textCurrentTurnInfo.movementMethod = ScrollingMovementMethod()
+                textCurrentTurnInfo.movementMethod = ScrollingMovementMethod()
 
-            lifecycleOwner = viewLifecycleOwner
-        }
+                lifecycleOwner = viewLifecycleOwner
+            }
+
         return binding.root
     }
 }

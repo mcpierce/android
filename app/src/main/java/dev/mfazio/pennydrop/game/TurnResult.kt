@@ -13,6 +13,6 @@ data class TurnResult(
     val canPass: Boolean = false,
     val clearSlots: Boolean = false,
     val isGameOver: Boolean = false
-) {
-    enum class TurnEnd { Pass, Bust, Win }
-}
+)
+
+enum class TurnEnd { Pass, Bust, Win }
