@@ -6,6 +6,7 @@ buildscript {
 
         lc_version = '2.3.0'
         room_version = '2.5.1'
+        recycler_view_version = '1.1.0'
     }
 }
 

@@ -7,6 +7,9 @@ import java.time.OffsetDateTime
 
 @Dao
 abstract class PennyDropDao {
+    @Transaction
+    @Query("SELECT * FROM game_statuses gs WHERE gs.gameId IN (SELECT gameId FROM games WHERE gameState = :finishedGameState)")
+    abstract fun getCompletedGameStatusesWithPlayers(finishedGameState: GameState = GameState.Finished): LiveData<List<GameStatusWithPlayer>>
 
     @Query("SELECT * FROM players WHERE playerName = :playerName")
     abstract fun getPlayer(playerName: String): Player?

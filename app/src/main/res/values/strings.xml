@@ -19,4 +19,7 @@
     <string name="coins_left">coin(s) left</string>
     <string name="na">N/A</string>
     <string name="play_button">Play Button</string>
+    <string name="rankings">Rankings</string>
+    <string name="player_type_image">Player Type Image</string>
+    <string name="games_played">games played</string>
 </resources>
