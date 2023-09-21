@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
+import androidx.preference.PreferenceManager
 import dev.mfazio.pennydrop.data.GameState
 import dev.mfazio.pennydrop.data.GameStatus
 import dev.mfazio.pennydrop.data.GameWithPlayers
@@ -24,6 +25,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private var clearText = false
 
     private val repository: PennyDropRepository
+    private val prefs = PreferenceManager.getDefaultSharedPreferences(application)
 
     val currentGame = MediatorLiveData<GameWithPlayers>()
 
@@ -88,7 +90,10 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     suspend fun startGame(playersForNewGame: List<Player>) {
-        repository.startGame(playersForNewGame)
+        repository.startGame(
+            playersForNewGame,
+            prefs?.getInt("pennyCount", Player.defaultPennyCount)
+        )
     }
 
     fun roll() {
@@ -218,7 +223,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private suspend fun playAITurn() {
-        delay(1000)
+        delay(if (prefs.getBoolean("fastAI", false)) 100 else 1000)
         val game = currentGame.value?.game
         val players = currentGame.value?.players
         val currentPlayer = currentPlayer.value

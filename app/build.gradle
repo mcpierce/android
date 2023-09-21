@@ -58,5 +58,9 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recycler_view_version"
     implementation "androidx.room:room-ktx:$recycler_view_version"
 
+    implementation "androidx.preference:preference-ktx:$preference_version"
+
+    implementation "com.google.android.material:material:$material_version"
+
     kapt "androidx.room:room-compiler:$room_version"
 }

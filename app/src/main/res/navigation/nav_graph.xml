@@ -9,7 +9,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/rankingsFragment"> <!-- TODO revert this -->
+    app:startDestination="@id/gameFragment">
     <fragment
         android:id="@+id/pickPlayersFragment"
         android:name="dev.mfazio.pennydrop.fragments.PickPlayersFragment"
@@ -24,4 +24,14 @@
         android:id="@+id/rankingsFragment"
         android:name="dev.mfazio.pennydrop.fragments.RankingsFragment"
         android:label="fragment_rankings" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="dev.mfazio.pennydrop.fragments.SettingsFragment"
+        android:label="@string/settings" />
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="dev.mfazio.pennydrop.fragments.AboutFragment"
+        android:label="@string/about_pennydrop" />
 </navigation>
